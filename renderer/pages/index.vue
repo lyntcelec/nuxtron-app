@@ -1,40 +1,35 @@
 <template>
   <div class="container">
-    <img src="/nuxt.png">
-    <h2>Hello Nuxtron.</h2>
-    <p>Loaded from the {{ name }}</p>
     <p>
-      <NuxtLink to="/about">
-        About
+      <NuxtLink to="/home">
+        Click to Home
       </NuxtLink>
     </p>
   </div>
 </template>
 
-<script>
-export default {
-  asyncData ({ req }) {
-    return {
-      name: process.static ? 'static' : (process.server ? 'server' : 'client'),
-    }
+<script lang="ts">
+import { Component, Vue } from "nuxt-property-decorator"
+
+@Component({
+  // middleware: "auth"
+  // layout: "main"
+})
+export default class Index extends Vue {
+  mounted(): void {
+    // console.log("INDEX =====")
+    this.$router.push("/home")
   }
 }
 </script>
 
-<style scoped>
+<style>
 .container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: white;
-  color: black;
-  font-family: "Lucida Console", Monaco, monospace;
-  padding-top: 100px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-}
-a {
-  color: black;
 }
 </style>

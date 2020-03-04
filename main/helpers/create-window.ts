@@ -74,7 +74,15 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
       nodeIntegration: true,
     },
   };
-  win = new BrowserWindow(browserOptions);
+  var option = {
+    height: options.height,
+    width: options.width,
+    webPreferences: {
+      webSecurity: false,
+      nodeIntegration: true
+    }
+  }
+  win = new BrowserWindow(option);
 
   win.on('close', saveState);
 

@@ -1,4 +1,4 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import {
   createWindow,
@@ -6,6 +6,23 @@ import {
 } from './helpers';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
+
+ipcMain.on('asynchronous-message', async (event, arg) => {
+  console.log(arg) // prints "ping"
+  event.reply('asynchronous-reply', 'pong')
+
+  const mainWindow = createWindow('main', {
+    width: 400,
+    height: 400,
+  });
+
+  if (isProd) {
+    await mainWindow.loadURL('app://./index.html#login');
+  } else {
+    const port = process.argv[2];
+    await mainWindow.loadURL(`http://localhost:${port}/#/login`);
+  }
+})
 
 if (isProd) {
   serve({ directory: 'app' });
