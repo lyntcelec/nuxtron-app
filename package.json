@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "nuxtron-app",
+  "description": "My application description",
+  "version": "1.0.0",
+  "author": "Shiono Yoshihide <shiono.yoshihide@gmail.com>",
+  "main": "app/background.js",
+  "scripts": {
+    "dev": "nuxtron",
+    "build": "nuxtron build"
+  },
+  "dependencies": {
+    "electron-serve": "^0.4.0",
+    "electron-store": "^5.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/typescript": "^2.8.1",
+    "@types/node": "^12.7.12",
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
+    "nuxt": "^2.10.1",
+    "nuxtron": "^0.2.1",
+    "typescript": "^3.6.4"
+  }
+}
